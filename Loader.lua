@@ -1,3 +1,5 @@
+--// Code By icmecodes
+--// https://dsc.gg/bobhub
 local game = game
 local Players = game.Players
 
@@ -13,19 +15,17 @@ local function loadScript(scriptUrl)
     end
 end
 
-local gameNames = {
-    ["Blade Ball"] = 13772394625,
+local supportedGames = {
+    [13772394625] = true,  -- Blade Ball
+    [14915220621] = true,  -- Blade Ball Ranked
+    [14915220621] = true,  -- Blade Ball Pro
+    [15144787112] = true,  -- Blade Ball Duels
 }
 
-local scripts = {
-    [gameNames["Blade Ball"]] = "https://raw.githubusercontent.com/ZanoLeafVN/BobHub/main/AutoParry.lua",
-}
+local scriptUrl = "https://raw.githubusercontent.com/ZanoLeafVN/BobHub/main/AutoParry.lua"
 
-local currentGameId = gameNames["Blade Ball"]
-local currentScriptUrl = scripts[currentGameId]
-
-if placeid == currentGameId then
-    loadScript(currentScriptUrl)
+if supportedGames[placeid] then
+    loadScript(scriptUrl)
     print("Script executed successfully!")
 else
     Players.LocalPlayer:Kick("Not Supported Game")
